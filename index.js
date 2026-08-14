@@ -1,10 +1,20 @@
 let currentTitle = "Spider-Man"
+let currentTextColor = "#FFFFFF";
+let currentOutlineColor = "#000000";
 const storedTitle = localStorage.getItem("current-title")
 if (storedTitle !== null) {
     currentTitle = storedTitle;
 }
+const storedTextColor = localStorage.getItem("text-color")
+if (storedTextColor !== null) {
+    document.body.style.color = storedTextColor;
+    document.querySelector("#open-settings-link").style.color = storedTextColor;
+}
+const storedOutlineColor = localStorage.getItem("outline-color")
+if (storedOutlineColor !== null) {
+    document.body.style.textShadow = `1px 1px 0 ${storedOutlineColor}`
+}
 
-// document.querySelector("#allow-horror").checked = "checked";
 
 document.querySelector("#time").textContent = new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
 function updateTime() {
@@ -30,10 +40,10 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=64cbe67ca110f541ec519ba
         console.log(data)
         if (data.results.length !== 0) {
             let randomNumber = Math.floor(Math.random() * data.results.length);
-            if (data.results[randomNumber].backdrop_path === null) {
-                if (data.results[0].backdrop_path !== null) {
+            if (data.results[randomNumber].backdrop_path === null || data.results[randomNumber].poster_path === null) {
+                if (data.results[0].backdrop_path !== null || data.results[randomNumber].backdrop_path === null) {
                     randomNumber = 0;
-                } else if (data.results[1].backdrop_path !== null) {
+                } else if (data.results[1].backdrop_path !== null || data.results[randomNumber].poster_path === null) {
                     randomNumber = 1;
                 } else {
                     randomNumber = 2;
@@ -62,11 +72,3 @@ document.querySelector("#search-bar-form").addEventListener("submit", (e) => {
     localStorage.setItem("current-title", searchedTitle);
     window.location.reload();
 })
-
-// document.querySelector("#settings-form").addEventListener("submit", (e) => {
-//     e.preventDefault();
-//     let selectedColor = document.querySelector("#color").value;
-//     document.body.style.color = selectedColor;
-//     let selectedOutlineColor = document.querySelector("#outline").value;
-//     document.body.style.textShadow = `1px 1px 0 ${selectedOutlineColor}`;
-// })

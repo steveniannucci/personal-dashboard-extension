@@ -5,7 +5,66 @@
         <link rel="stylesheet" href="../settings.css">
     </head>
     <body>
-        <h1>Settings</h1>
-        <script src="../index.js"></script>
+        <a href="../index.html">Go Back to Dashboard</a>
+        <h1>Dashboard Settings</h1>
+        <form id="settings-form">
+            <fieldset id="colors-fieldset">
+                <legend>Colors</legend>
+                <div class="color-field">
+                    <label for="text-color">Text</label>
+                    <input type="color" id="text-color" name="text-color"/>
+                </div>
+                <div class="color-field">
+                    <label for="outline">Outline</label>
+                    <input type="color" id="outline-color" name="outline-color" />
+                </div>
+                <div class="preview-field">
+                    <label>Preview:</label>
+                    <span id="preview"></span>
+                </div>
+            </fieldset>
+            <fieldset id="nsfw-fieldset">
+                <legend>NSFW</legend>
+                <div class="checkbox-field">
+                    <label for="allow-adult">Adult</label>
+                    <input type="checkbox" id="allow-adult" name="allow-adult"/>
+                </div>
+                <div class="checkbox-field">
+                    <label for="allow-horror">Horror</label>
+                    <input type="checkbox" id="allow-horror" name="allow-horror" />
+                </div>
+            </fieldset>
+            <fieldset id="goals-fieldset">
+                <legend>Goals</legend>
+                <label>Goal #1</label>
+                <input type="text">
+                <label>Goal #2</label>
+                <input type="text">
+                <label>Goal #3</label>
+                <input type="text">
+                <label>Goal #4</label>
+                <input type="text">
+                <label>Goal #5</label>
+                <input type="text">
+            </fieldset>
+            <fieldset id="quotes-fieldset">
+                <legend>Quotes</legend>
+                <label>Quote #1</label>
+                <input type="text">
+                <label>Quote #2</label>
+                <input type="text">
+                <label>Quote #3</label>
+                <input type="text">
+                <label>Quote #4</label>
+                <input type="text">
+                <label>Quote #5</label>
+                <input type="text">
+            </fieldset>
+            <button id="save-changes-btn">Save Changes</button>
+        </form>
+        <a href="../index.html">
+            <button id="back-to-dashboard-btn">Go Back to Dashboard</button>
+        </a>
+        <script src="../settings.js"></script>
     </body>
 </html>

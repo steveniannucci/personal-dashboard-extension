@@ -115,32 +115,6 @@ body {
     color: white;
 }
 
-#settings-form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-}
-
-#settings-form label {
-    font-size: 1rem;
-}
-
-.color-field {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: start;
-    align-items: center;
-    margin: 1em 0 0 0;
-    gap: 0.5em;
-}
-
-.checkbox-field {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: start;
-    align-items: center;
-}
-
 .no-movie {
     display: flex;
     align-items: center;
