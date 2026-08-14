@@ -4,6 +4,9 @@ if (storedTitle !== null) {
     currentTitle = storedTitle;
 }
 
+// document.querySelector("#allow-horror").checked = "checked";
+
+document.querySelector("#time").textContent = new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
 function updateTime() {
     document.querySelector("#time").textContent = new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
 }
@@ -11,6 +14,10 @@ setInterval(updateTime, 1000);
 
 const currentYear = new Date().getFullYear();
 // const quote = document.querySelector("#quote").textContent = "\"With great power comes great responsibility.\""
+
+// const quotes = ["With great power comes great responsibility.", "Be the change you want to see in the world.", "How did we get here?", "Happiness can be found even in the darkest of times, if one only remembers to turn on the light.", "Did you... ever do something that you regret?"]
+// const randomQuote = Math.floor(Math.random() * quotes.length);
+// document.querySelector("#quote").textContent = `"${quotes[randomQuote]}"`
 
 document.querySelector("#title").textContent = `Title: ${currentTitle}`;
 
@@ -55,3 +62,11 @@ document.querySelector("#search-bar-form").addEventListener("submit", (e) => {
     localStorage.setItem("current-title", searchedTitle);
     window.location.reload();
 })
+
+// document.querySelector("#settings-form").addEventListener("submit", (e) => {
+//     e.preventDefault();
+//     let selectedColor = document.querySelector("#color").value;
+//     document.body.style.color = selectedColor;
+//     let selectedOutlineColor = document.querySelector("#outline").value;
+//     document.body.style.textShadow = `1px 1px 0 ${selectedOutlineColor}`;
+// })

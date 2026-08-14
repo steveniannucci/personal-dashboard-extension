@@ -4,7 +4,7 @@
 
 body {
     display: grid;
-    grid-template: repeat(5, 1fr), repeat(1, 1fr);
+    grid-template: repeat(3, 1fr), repeat(1, 1fr);
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -15,6 +15,8 @@ body {
         "cen"
         "..."
         "bot";
+    color: white;
+    text-shadow: 1px 1px 0 black;
 }
 
 #top {
@@ -58,8 +60,6 @@ body {
 #top,
 #center,
 #bottom {
-    color: white;
-    text-shadow: 1px 1px 0 black;
     font-size: 1.25rem;
 }
 
@@ -105,10 +105,37 @@ body {
 } */
 
 #goals {
+    grid-area: goa;
     display: flex;
     flex-direction: column;
     background: rgba(0, 0, 0, 0.2);
     padding: 0.5em 1em 0.5em 0.5em;
+}
+
+#settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+#settings-form label {
+    font-size: 1rem;
+}
+
+.color-field {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+    align-items: center;
+    margin: 1em 0 0 0;
+    gap: 0.5em;
+}
+
+.checkbox-field {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+    align-items: center;
 }
 
 .no-movie {
