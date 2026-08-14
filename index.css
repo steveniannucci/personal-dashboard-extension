@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template: repeat(5, 1fr), repeat(1, 1fr);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    grid-template-areas: 
+        "top"
+        "..."
+        "cen"
+        "..."
+        "bot";
+}
+
+#top {
+    grid-area: top;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    padding: 1em;
+}
+
+#center {
+    grid-area: cen;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#bottom {
+    grid-area: bot;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    padding: 1em;
+}
+
+#goals-top {
+    font-weight: bold;
+}
+
+#time {
+    font-size: 6vw;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-bottom: 1px solid white;
+}
+
+#top,
+#center,
+#bottom {
+    color: white;
+    text-shadow: 1px 1px 0 black;
+}
+
+#quote {
+    padding: 0.5em 0 0 0;
+}
+
+#poster {
+    border: 1px solid black;
+    width: 100px;
+    height: 150px;
+    box-shadow: 1px 1px 20px #aaa;
+}
+
+#search-bar-form {
+    display: flex;
+    gap: 0;
+    border: 1px solid black;
+}
+
+#search-bar input {
+    width: 250px;
+}
+
+#search-bar input:focus {
+    outline: none;
+}
+
+#search-bar button:hover {
+    cursor: pointer;
+    background: lightgray;
+}
+
+#search-bar input,
+#search-bar button {
+    padding: 0.5em;
+    border: none;
+}
+
+/* #poster:hover {
+    cursor: pointer;
+} */
+
+#goals {
+    display: flex;
+    flex-direction: column;
+}
+
+.no-movie {
+    display: flex;
+    align-items: center;
+    background: black;
+}
