@@ -1,5 +1,5 @@
 {
-    "manifest-version": 3,
+    "manifest_version": 3,
     "name": "Movie-Based Personal Dashboard",
     "version": "1.0.0",
     "description": "A custom personal dashboard that fetches movie data from the TMDB database.",

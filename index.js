@@ -4,7 +4,11 @@ if (storedTitle !== null) {
     currentTitle = storedTitle;
 }
 
-const time = document.querySelector("#time").textContent = new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
+function updateTime() {
+    document.querySelector("#time").textContent = new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
+}
+setInterval(updateTime, 1000);
+
 const currentYear = new Date().getFullYear();
 // const quote = document.querySelector("#quote").textContent = "\"With great power comes great responsibility.\""
 

@@ -45,6 +45,7 @@ body {
 }
 
 #goals-top {
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
@@ -59,9 +60,11 @@ body {
 #bottom {
     color: white;
     text-shadow: 1px 1px 0 black;
+    font-size: 1.25rem;
 }
 
 #quote {
+    font-size: 1.25rem;
     padding: 0.5em 0 0 0;
 }
 
@@ -104,10 +107,16 @@ body {
 #goals {
     display: flex;
     flex-direction: column;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.5em 1em 0.5em 0.5em;
 }
 
 .no-movie {
     display: flex;
     align-items: center;
     background: black;
+}
+
+.goal {
+    font-size: 1.25rem;
 }
