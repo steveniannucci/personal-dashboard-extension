@@ -32,7 +32,7 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=64cbe67ca110f541ec519ba
                 <img id="poster" src="https://image.tmdb.org/t/p/original/${data.results[randomNumber].poster_path}" title="${data.results[randomNumber].title} (${data.results[randomNumber].release_date.slice(0, 4)})">
             `
 
-            document.body.style.background = `url("https://image.tmdb.org/t/p/original/${data.results[randomNumber].backdrop_path}") no-repeat`
+            document.body.style.background = `url("https://image.tmdb.org/t/p/original/${data.results[randomNumber].backdrop_path}") no-repeat center center fixed`
             document.body.style.backgroundSize = `cover`;
         } else {
             document.querySelector("#poster-container").innerHTML = `
