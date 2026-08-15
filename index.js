@@ -1,6 +1,10 @@
 let currentTitle = "Spider-Man"
 let currentTextColor = "#FFFFFF";
 let currentOutlineColor = "#000000";
+
+const lockedIcon = document.querySelector("#lock-screen-icon");
+const lockedIconBtn = document.querySelector("#lock-screen-btn");
+
 const storedTitle = localStorage.getItem("current-title")
 if (storedTitle !== null) {
     currentTitle = storedTitle;
@@ -8,13 +12,13 @@ if (storedTitle !== null) {
 const storedTextColor = localStorage.getItem("text-color")
 if (storedTextColor !== null) {
     document.body.style.color = storedTextColor;
-    document.querySelector("#open-settings-link").style.color = storedTextColor;
 }
 const storedOutlineColor = localStorage.getItem("outline-color")
 if (storedOutlineColor !== null) {
     document.body.style.textShadow = `1px 1px 0 ${storedOutlineColor}`
 }
-
+const storedNumber = localStorage.getItem("locked-number");
+console.log(storedNumber);
 
 document.querySelector("#time").textContent = new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
 function updateTime() {
@@ -40,14 +44,20 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=64cbe67ca110f541ec519ba
         console.log(data)
         if (data.results.length !== 0) {
             let randomNumber = Math.floor(Math.random() * data.results.length);
-            if (data.results[randomNumber].backdrop_path === null || data.results[randomNumber].poster_path === null) {
-                if (data.results[0].backdrop_path !== null || data.results[randomNumber].backdrop_path === null) {
-                    randomNumber = 0;
-                } else if (data.results[1].backdrop_path !== null || data.results[randomNumber].poster_path === null) {
-                    randomNumber = 1;
-                } else {
-                    randomNumber = 2;
+            if (storedNumber === null) {
+                    if (data.results[randomNumber].backdrop_path === null || data.results[randomNumber].poster_path === null) {
+                    if (data.results[0].backdrop_path !== null || data.results[randomNumber].backdrop_path !== null) {
+                        randomNumber = 0;
+                    } else if (data.results[1].backdrop_path !== null || data.results[randomNumber].poster_path !== null) {
+                        randomNumber = 1;
+                    } else {
+                        randomNumber = 2;
+                    }
                 }
+            } else {
+                randomNumber = storedNumber;
+                lockedIcon.textContent = "🔒"
+                lockedIconBtn.textContent = "Unlock screen";
             }
             document.querySelector("#poster-container").innerHTML = `
                 <img id="poster" src="https://image.tmdb.org/t/p/original/${data.results[randomNumber].poster_path}" title="${data.results[randomNumber].title} (${data.results[randomNumber].release_date.slice(0, 4)})">
@@ -55,6 +65,19 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=64cbe67ca110f541ec519ba
 
             document.body.style.background = `url("https://image.tmdb.org/t/p/original/${data.results[randomNumber].backdrop_path}") no-repeat center center fixed`
             document.body.style.backgroundSize = `cover`;
+
+            lockedIconBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                if (lockedIcon.textContent === "🔓") {
+                    lockedIcon.textContent = "🔒"
+                    lockedIconBtn.textContent = "Unlock screen";
+                    localStorage.setItem("locked-number", randomNumber);
+                } else {
+                    lockedIcon.textContent = "🔓"
+                    lockedIconBtn.textContent = "Lock screen";
+                    localStorage.removeItem("locked-number");
+                }
+            })
         } else {
             document.querySelector("#poster-container").innerHTML = `
                 <p id="poster" class="no-movie" title="This Movie Doesn't Exist. (${currentYear})">This Movie Doesn't Exist.</p>
@@ -70,5 +93,8 @@ document.querySelector("#search-bar-form").addEventListener("submit", (e) => {
     e.preventDefault();
     let searchedTitle = document.querySelector("#search-bar-input").value
     localStorage.setItem("current-title", searchedTitle);
+    if (localStorage.getItem("locked-number") !== null) {
+        localStorage.removeItem("locked-number")
+    }
     window.location.reload();
 })

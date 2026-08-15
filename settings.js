@@ -25,6 +25,8 @@ document.querySelector("#settings-form").addEventListener("submit", (e) => {
     localStorage.setItem("text-color", selectedTextColor);
     let selectedOutlineColor = document.querySelector("#outline-color").value;
     localStorage.setItem("outline-color", selectedOutlineColor);
+
+    
     
 })
 
