@@ -1,3 +1,37 @@
+document.addEventListener("DOMContentLoaded", async () => {
+    const bookmarksBar = document.querySelector("#bookmarks-bar");
+    try {
+        browser.bookmarks.getTree().then(bookMarkTreeNodes => {
+            const root = bookMarkTreeNodes[0];
+            if (root.children) {
+                for (let child of root.children) {
+                    for (let childEl of child.children) {
+                        console.log(childEl);
+                        faviconUrl = `http://www.google.com/s2/favicons?domain=${childEl.url}`
+                        bookmarksBar.innerHTML += `
+                        <div class="bookmark-container">
+                            <a class="bookmark-link" href="${childEl.url}">
+                                <img class="bookmark-icon" src="${faviconUrl}">
+                                <span class="bookmark-title">${childEl.title}</span>
+                            </a>
+                        </div
+                        `
+                    }
+                }
+            }
+        })
+        // const bookmarksTree = await chrome.bookmarks.getTree();
+        // const tree = browser.bookmarks.getTree;
+        // for (let bookmark of tree) {
+        //     document.bookmarksContainer.append(bookmark);
+        //     console.log(bookmark);
+        } catch(err) {
+        console.log("Failed to load bookmarks:", err);
+    }
+})
+
+
+
 let currentTitle = "Spider-Man"
 let currentTextColor = "#FFFFFF";
 let currentOutlineColor = "#000000";
@@ -18,7 +52,6 @@ if (storedOutlineColor !== null) {
     document.body.style.textShadow = `1px 1px 0 ${storedOutlineColor}`
 }
 const storedNumber = localStorage.getItem("locked-number");
-console.log(storedNumber);
 
 document.querySelector("#time").textContent = new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
 function updateTime() {
