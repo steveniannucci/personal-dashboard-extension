@@ -1,35 +1,3 @@
-document.addEventListener("DOMContentLoaded", async () => {
-    const bookmarksBar = document.querySelector("#bookmarks-bar");
-    try {
-        browser.bookmarks.getTree().then(bookMarkTreeNodes => {
-            const root = bookMarkTreeNodes[0];
-            if (root.children) {
-                for (let child of root.children) {
-                    for (let childEl of child.children) {
-                        console.log(childEl.url);
-                        bookmarksBar.innerHTML += `
-                        <div class="bookmark-container">
-                            <a class="bookmark-link" href="${childEl.url}">
-                                <span class="bookmark-title">${childEl.title}</span>
-                            </a>
-                        </div>
-                        `
-                    }
-                }
-            }
-        })
-        // const bookmarksTree = await chrome.bookmarks.getTree();
-        // const tree = browser.bookmarks.getTree;
-        // for (let bookmark of tree) {
-        //     document.bookmarksContainer.append(bookmark);
-        //     console.log(bookmark);
-        } catch(err) {
-        console.log("Failed to load bookmarks:", err);
-    }
-})
-
-
-
 let currentTitle = "Spider-Man"
 let currentTextColor = "#FFFFFF";
 let currentOutlineColor = "#000000";

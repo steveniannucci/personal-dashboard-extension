@@ -4,13 +4,12 @@
 
 body {
     display: grid;
-    grid-template: 2.5em repeat(5, 1fr) / repeat(1, 1fr);
+    grid-template: repeat(5, 1fr) / repeat(1, 1fr);
     margin: 0;
     padding: 0;
     height: 100vh;
     width: 100vw;
-    grid-template-areas:
-        "boo" 
+    grid-template-areas: 
         "top"
         "..."
         "cen"
@@ -22,49 +21,6 @@ body {
 
 a {
     color: white;
-}
-
-/* #main {
-    height: 100vh;
-    width: 100vw;
-} */
-
-#bookmarks-bar {
-    grid-area: boo;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: rgb(90, 90, 90);
-    height: 2.5em;
-    width: 100vw;
-}
-
-.bookmark-container {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    padding: 0.2em 0.5em;
-    gap: 0.2em;
-}
-
-.bookmark-container:hover {
-    background: rgb(50, 50, 50);
-    padding: 0.2em 0.5em;
-    border-radius: 4px;
-}
-
-.bookmark-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    gap: 0.5em;
-}
-
-.bookmark-title {
-    max-width: 20ch;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 
 #top {
