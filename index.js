@@ -6,15 +6,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (root.children) {
                 for (let child of root.children) {
                     for (let childEl of child.children) {
-                        console.log(childEl);
-                        faviconUrl = `http://www.google.com/s2/favicons?domain=${childEl.url}`
+                        console.log(childEl.url);
                         bookmarksBar.innerHTML += `
                         <div class="bookmark-container">
                             <a class="bookmark-link" href="${childEl.url}">
-                                <img class="bookmark-icon" src="${faviconUrl}">
                                 <span class="bookmark-title">${childEl.title}</span>
                             </a>
-                        </div
+                        </div>
                         `
                     }
                 }
