@@ -8,6 +8,10 @@ const storedOutlineColor = localStorage.getItem("outline-color")
 if (storedOutlineColor !== null) {
     currentOutlineColor = storedOutlineColor;
 }
+const storedDisplayTaglineCheckedValue = localStorage.getItem("display-tagline")
+if (storedDisplayTaglineCheckedValue !== null && storedDisplayTaglineCheckedValue !== false) {
+    document.querySelector("#display-tagline").checked = true;
+}
 
 document.querySelector("#text-color").value = currentTextColor;
 document.querySelector("#preview").style.color = currentTextColor;
@@ -25,9 +29,12 @@ document.querySelector("#settings-form").addEventListener("submit", (e) => {
     localStorage.setItem("text-color", selectedTextColor);
     let selectedOutlineColor = document.querySelector("#outline-color").value;
     localStorage.setItem("outline-color", selectedOutlineColor);
-
-    
-    
+    let displayTagline = document.querySelector("#display-tagline").checked;
+    if (displayTagline === true) {
+        localStorage.setItem("display-tagline", displayTagline);
+    } else if (storedDisplayTaglineCheckedValue !== null) {
+        localStorage.removeItem("display-tagline");
+    }
 })
 
 document.querySelector("#text-color").addEventListener("input", () => {

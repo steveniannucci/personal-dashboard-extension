@@ -67,8 +67,8 @@ a {
     font-size: 1.25rem;
 }
 
-#quote {
-    font-size: 1.25rem;
+#tagline {
+    font-size: 1.5rem;
     padding: 0.5em 0 0 0;
 }
 
@@ -77,6 +77,14 @@ a {
     width: 100px;
     height: 150px;
     box-shadow: 1px 1px 20px #aaa;
+}
+
+#search-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    gap: 0.5em;
 }
 
 #search-bar-form {
@@ -119,11 +127,28 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: end;
-    align-items: center;
+    align-items: end;
     gap: 0.5em;
+    width: 185px;
 }
 
-#lock-screen-btn {
+#lock-movie-setting,
+#lock-backdrop-setting {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    gap: 0.2em;
+}
+
+#lock-movie-btn,
+#lock-backdrop-btn {
+    cursor: pointer;
+    padding: 0.2em 0.5em;
+    width: 100%;
+}
+
+#change-backdrop-btn {
     cursor: pointer;
     padding: 0.2em 0.5em;
 }
@@ -141,4 +166,21 @@ a {
 
 .goal {
     font-size: 1.25rem;
+}
+
+#title,
+#current-backdrop {
+    font-size: 1rem;
+}
+
+#change-backdrop-form input{
+    width: 5ch;
+}
+
+#change-backdrop-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1rem;
+    gap: 0.5em;
 }

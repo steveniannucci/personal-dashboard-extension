@@ -1,6 +1,7 @@
 <!DOCTYPE html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>New Tab</title>
         <link rel="stylesheet" href="./index.css">
     </head>
@@ -13,22 +14,32 @@
             <div id="search-bar">
                 <form id="search-bar-form">
                     <input id="search-bar-input" type="text" placeholder="Spider-Man">
-                    <button>Change Title</button>
+                    <button>Change title</button>
+                </form>
+                <form id="change-backdrop-form">
+                    <label>Backdrop #</label>
+                    <input type="text" id="backdrop-number" name="backdrop-number" maxlength="3">
+                    <button id="change-backdrop-btn">Change backdrop</button>
                 </form>
             </div>
         </div>
         <div id="center">
             <span id="time"></span>
-            <span id="quote">"With great power comes great responsibility."</span>
+            <span id="tagline"></span>
         </div>
         <div id="bottom">
             <div id="poster-container"></div>
             <span id="title">Title: Spider-Man</span>
             <div id="settings">
                 <a id="open-settings-link" href="./pages/settings.html">Open Settings</a>
-                <div>
-                    <button id="lock-screen-btn">Lock screen</button>
-                    <span id="lock-screen-icon">🔓</span>
+                <span id="current-backdrop"></span>
+                <div id="lock-movie-setting">
+                    <button id="lock-movie-btn">Lock movie</button>
+                    <span id="lock-movie-icon">🔓</span>
+                </div>
+                <div id="lock-backdrop-setting">
+                    <button id="lock-backdrop-btn">Lock backdrop</button>
+                    <span id="lock-backdrop-icon">🔓</span>
                 </div>
             </div>
         </div>

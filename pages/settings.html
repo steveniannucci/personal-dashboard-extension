@@ -1,6 +1,7 @@
 <!DOCTYPE html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>New Tab</title>
         <link rel="stylesheet" href="../settings.css">
     </head>
@@ -22,6 +23,14 @@
                     <label>Preview:</label>
                     <span id="preview"></span>
                 </div>
+            </fieldset>
+            <fieldset id="tagline-fieldset">
+                <legend>Tagline</legend>
+                <div class="checkbox-field">
+                    <label for="display-tagline">Display tagline</label>
+                    <input type="checkbox" id="display-tagline" name="display-tagline"/>
+                </div>
+                <span>Note: Taglines will only be displayed for movies that have it.</span>
             </fieldset>
             <fieldset id="nsfw-fieldset">
                 <legend>NSFW</legend>
@@ -46,21 +55,6 @@
                 <input type="text" id="goal-4" name="goal-4">
                 <label for="goal-5">Goal #5</label>
                 <input type="text" id="goal-5" name="goal-5">
-
-
-            </fieldset>
-            <fieldset id="quotes-fieldset">
-                <legend>Quotes</legend>
-                <label>Quote #1</label>
-                <input type="text">
-                <label>Quote #2</label>
-                <input type="text">
-                <label>Quote #3</label>
-                <input type="text">
-                <label>Quote #4</label>
-                <input type="text">
-                <label>Quote #5</label>
-                <input type="text">
             </fieldset>
             <button id="save-changes-btn">Save Changes</button>
         </form>
