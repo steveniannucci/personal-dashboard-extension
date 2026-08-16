@@ -125,6 +125,15 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=64cbe67ca110f541ec519ba
                     }
                 })
             }
+            document.querySelector("#change-backdrop-form").addEventListener("submit", (e) => {
+                e.preventDefault();
+                let searchedBackdropNumber = document.querySelector("#backdrop-number").value
+                localStorage.setItem("locked-backdrop-number", searchedBackdropNumber);
+                if (storedMovieNumber === null) {
+                    localStorage.setItem("locked-movie-number", randomMovieNumber);
+                }
+                window.location.reload();
+            })
 
             lockedMovieBtn.addEventListener("click", (e) => {
                 e.preventDefault();

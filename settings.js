@@ -46,3 +46,17 @@ document.querySelector("#outline-color").addEventListener("input", () => {
     let selectedOutlineColor = document.querySelector("#outline-color").value;
     document.querySelector("#preview").style.textShadow = `1px 1px 0 ${selectedOutlineColor}`;
 })
+
+// fetch(`https://api.themoviedb.org/3/search/movie?api_key=64cbe67ca110f541ec519ba56ec890b2&query=Lord Of The Rings&include_adult=false`, { 
+//     method: "GET",
+//     header: "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NGNiZTY3Y2ExMTBmNTQxZWM1MTliYTU2ZWM4OTBiMiIsIm5iZiI6MTc4NjU1MzMwNS4xOTkwMDAxLCJzdWIiOiI2YTdjYTNkOTU4ZDU5MGZmZDBhZTY4MzYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.KaRDaQ0tzDzj5ZrcjBmj5TZ2uA8HER25NdcZpqeeApw"
+// })
+//     .then(res => res.json())
+//     .then(data => console.log(data));
+
+// fetch(`https://api.themoviedb.org/3/movie/122/images?api_key=64cbe67ca110f541ec519ba56ec890b2`, { 
+//     method: "GET",
+//     header: "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NGNiZTY3Y2ExMTBmNTQxZWM1MTliYTU2ZWM4OTBiMiIsIm5iZiI6MTc4NjU1MzMwNS4xOTkwMDAxLCJzdWIiOiI2YTdjYTNkOTU4ZDU5MGZmZDBhZTY4MzYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.KaRDaQ0tzDzj5ZrcjBmj5TZ2uA8HER25NdcZpqeeApw"
+// })
+//     .then(res => res.json())
+//     .then(data => console.log(data));
