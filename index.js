@@ -32,6 +32,19 @@ const allowPG13RatedContent = localStorage.getItem("allow-pg-13-rated-content");
 const allowHorrorGenreContent = localStorage.getItem("allow-horror-genre-content");
 const allowRomanceGenreContent = localStorage.getItem("allow-romance-genre-content");
 const allowThrillerGenreContent = localStorage.getItem("allow-thriller-genre-content");
+const storedGoals = localStorage.getItem("goals");
+
+if (storedGoals !== null && storedGoals.length !== 0) {
+    const goals = [];
+    const storedGoalsData = JSON.parse(storedGoals);
+    for (let goal of storedGoalsData) {
+        goals.push(goal);
+    }
+    const randomGoal = Math.floor(Math.random() * goals.length);
+    document.querySelector("#goal").textContent = `🎯${goals[randomGoal]}`
+} else {
+    document.querySelector("#goal").textContent = `🎯Add a new goal here.`
+}
 
 if (storedDisplayTaglineCheckedValue === null) {
     localStorage.setItem("display-tagline", true);
@@ -61,10 +74,6 @@ setInterval(updateTime, 1000);
 const currentYear = new Date().getFullYear();
 
 let showBackdrop = true;
-
-const goals = ["Read a book.", "Do the laundry.", "Write a poem.", "Go for a walk.", "Workout at the gym."]
-const randomQuote = Math.floor(Math.random() * goals.length);
-document.querySelector("#goal").textContent = `🎯${goals[randomQuote]}`
 
 document.querySelector("#title").textContent = `Title: ${currentTitle}`;
 

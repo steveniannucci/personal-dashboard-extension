@@ -27,6 +27,25 @@ const storedNsfwContent5CheckedValue = localStorage.getItem("allow-thriller-genr
 if (storedNsfwContent5CheckedValue !== "false") {
     document.querySelector("#allow-thriller-genre-content").checked = true;
 }
+const storedGoals = localStorage.getItem("goals");
+if (storedGoals !== null && storedGoals.length !== 0) {
+    const storedGoalsData = JSON.parse(storedGoals);
+    if (typeof storedGoalsData[0] !== "undefined") {
+        document.querySelector("#goal-1").value = storedGoalsData[0];
+    }
+    if (typeof storedGoalsData[1] !== "undefined") {
+        document.querySelector("#goal-2").value = storedGoalsData[1];
+    }
+    if (typeof storedGoalsData[2] !== "undefined") {
+        document.querySelector("#goal-3").value = storedGoalsData[2];
+    }
+    if (typeof storedGoalsData[3] !== "undefined") {
+        document.querySelector("#goal-4").value = storedGoalsData[3];
+    }
+    if (typeof storedGoalsData[4] !== "undefined") {
+        document.querySelector("#goal-5").value = storedGoalsData[4];
+    }
+}
 
 document.querySelector("#text-color").value = storedTextColor;
 document.querySelector("#preview").style.color = storedTextColor;
@@ -39,24 +58,47 @@ document.querySelector("#settings-form").addEventListener("submit", (e) => {
     e.preventDefault();
     alert("Your changes have been saved.")
     // colors
-    let selectedTextColor = document.querySelector("#text-color").value;
+    const selectedTextColor = document.querySelector("#text-color").value;
     localStorage.setItem("text-color", selectedTextColor);
-    let selectedOutlineColor = document.querySelector("#outline-color").value;
+    const selectedOutlineColor = document.querySelector("#outline-color").value;
     localStorage.setItem("outline-color", selectedOutlineColor);
     // tagline
-    let displayTagline = document.querySelector("#display-tagline").checked;
+    const displayTagline = document.querySelector("#display-tagline").checked;
     localStorage.setItem("display-tagline", displayTagline);
     // nsfw
-    let nsfwContent1 = document.querySelector("#allow-mature-rated-content").checked;
+    const nsfwContent1 = document.querySelector("#allow-mature-rated-content").checked;
     localStorage.setItem("allow-mature-rated-content", nsfwContent1);
-    let nsfwContent2 = document.querySelector("#allow-pg-13-rated-content").checked;
+    const nsfwContent2 = document.querySelector("#allow-pg-13-rated-content").checked;
     localStorage.setItem("allow-pg-13-rated-content", nsfwContent2);
-    let nsfwContent3 = document.querySelector("#allow-horror-genre-content").checked;
+    const nsfwContent3 = document.querySelector("#allow-horror-genre-content").checked;
     localStorage.setItem("allow-horror-genre-content", nsfwContent3);
-    let nsfwContent4 = document.querySelector("#allow-romance-genre-content").checked;
+    const nsfwContent4 = document.querySelector("#allow-romance-genre-content").checked;
     localStorage.setItem("allow-romance-genre-content", nsfwContent4);
-    let nsfwContent5 = document.querySelector("#allow-thriller-genre-content").checked;
+    const nsfwContent5 = document.querySelector("#allow-thriller-genre-content").checked;
     localStorage.setItem("allow-thriller-genre-content", nsfwContent5);
+    // goals
+    const goals = [];
+    const goal1 = document.querySelector("#goal-1").value
+    if (goal1 !== "") {
+        goals.push(goal1);
+    }
+    const goal2 = document.querySelector("#goal-2").value
+    if (goal2 !== "") {
+        goals.push(goal2);
+    }
+    const goal3 = document.querySelector("#goal-3").value
+    if (goal3 !== "") {
+        goals.push(goal3);
+    }
+    const goal4 = document.querySelector("#goal-4").value
+    if (goal4 !== "") {
+        goals.push(goal4);
+    }
+    const goal5 = document.querySelector("#goal-5").value
+    if (goal5 !== "") {
+        goals.push(goal5);
+    }
+    localStorage.setItem("goals", JSON.stringify(goals));
 })
 
 document.querySelector("#text-color").addEventListener("input", () => {
@@ -66,4 +108,20 @@ document.querySelector("#text-color").addEventListener("input", () => {
 document.querySelector("#outline-color").addEventListener("input", () => {
     let selectedOutlineColor = document.querySelector("#outline-color").value;
     document.querySelector("#preview").style.textShadow = `1px 1px 0 ${selectedOutlineColor}`;
+})
+
+document.querySelector("#clear-goal-1-btn").addEventListener("click", () => {
+    document.querySelector("#goal-1").value = "";
+})
+document.querySelector("#clear-goal-2-btn").addEventListener("click", () => {
+    document.querySelector("#goal-2").value = "";
+})
+document.querySelector("#clear-goal-3-btn").addEventListener("click", () => {
+    document.querySelector("#goal-3").value = "";
+})
+document.querySelector("#clear-goal-4-btn").addEventListener("click", () => {
+    document.querySelector("#goal-4").value = "";
+})
+document.querySelector("#clear-goal-5-btn").addEventListener("click", () => {
+    document.querySelector("#goal-5").value = "";
 })
