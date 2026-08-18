@@ -16,13 +16,19 @@ const storedTextColor = localStorage.getItem("text-color")
 if (storedTextColor === null) {
     localStorage.setItem("text-color", currentTextColor);
 } else {
-    document.body.style.color = storedTextColor;
+    const elements = document.querySelectorAll(".subject-to-recolor");
+    for (let element of elements) {
+        element.style.color = storedTextColor;
+    }
 }
 const storedOutlineColor = localStorage.getItem("outline-color")
 if (storedOutlineColor === null) {
     localStorage.setItem("outline-color", currentOutlineColor);
 } else {
-    document.body.style.textShadow = `1px 1px 0 ${storedOutlineColor}`
+    const elements = document.querySelectorAll(".subject-to-recolor");
+    for (let element of elements) {
+        element.style.textShadow = `1px 1px 0 ${storedOutlineColor}`
+    }
 }
 const storedMovieNumber = localStorage.getItem("locked-movie-number");
 const storedBackdropNumber = localStorage.getItem("locked-backdrop-number");
