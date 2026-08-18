@@ -23,6 +23,7 @@
                     <label>Preview:</label>
                     <span id="preview"></span>
                 </div>
+                <button id="restore-default-colors-btn" type="button">Restore Default Colors</button>
                 <span>Note: "Open Settings" link will not be recolored. Text may become unreadable depending on your preference.</span>
             </fieldset>
             <fieldset id="tagline-fieldset">
@@ -44,6 +45,10 @@
                     <label for="allow-pg-13-rated-content">PG-13</label>
                     <input type="checkbox" id="allow-pg-13-rated-content" name="allow-pg-13-rated-content" />
                 </div>
+                <div class="checkbox-field">
+                    <label for="allow-not-rated-content">Not-Rated / NR *</label>
+                    <input type="checkbox" id="allow-not-rated-content" name="allow-not-rated-content" />
+                </div>
                 <span>Genres:</span>
                 <div class="checkbox-field">
                     <label for="allow-horror-genre-content">Horror</label>
@@ -58,36 +63,44 @@
                     <input type="checkbox" id="allow-thriller-genre-content" name="allow-thriller-genre-content" />
                 </div>
                 <span>Note: Some movies from genres other than the ones listed here may contain disturbing imagery or explicit content.</span>
+                <span>* May or may not contain adult content.</span>
             </fieldset>
             <fieldset id="goals-fieldset">
                 <legend>Goals</legend>
                 <label for="goal-1">Goal #1</label>
                 <div class="goal-field">
-                    <input type="text" id="goal-1" name="goal-1">
+                    <input type="text" id="goal-1" name="goal-1" maxlength="50">
                     <button id="clear-goal-1-btn" type="button">Clear goal</button>
                 </div>
                 <label for="goal-2">Goal #2</label>
                 <div class="goal-field">
-                    <input type="text" id="goal-2" name="goal-2">
+                    <input type="text" id="goal-2" name="goal-2" maxlength="50">
                     <button id="clear-goal-2-btn" type="button">Clear goal</button>
                 </div>
                 <label for="goal-3">Goal #3</label>
                 <div class="goal-field">
-                    <input type="text" id="goal-3" name="goal-3">
+                    <input type="text" id="goal-3" name="goal-3" maxlength="50">
                     <button id="clear-goal-3-btn" type="button">Clear goal</button>
                 </div>
                 <label for="goal-4">Goal #4</label>
                 <div class="goal-field">
-                    <input type="text" id="goal-4" name="goal-4">
+                    <input type="text" id="goal-4" name="goal-4" maxlength="50">
                     <button id="clear-goal-4-btn" type="button">Clear goal</button>
                 </div>
                 <label for="goal-5">Goal #5</label>
                 <div class="goal-field">
-                    <input type="text" id="goal-5" name="goal-5">
+                    <input type="text" id="goal-5" name="goal-5" maxlength="50">
                     <button id="clear-goal-5-btn" type="button">Clear goal</button>
                 </div>
+                <div class="checkbox-field">
+                    <label for="randomize-goals">Display goals at random *</label>
+                    <input type="checkbox" id="randomize-goals" name="randomize-goals"/>
+                </div>
+                <span>Note: Goals can be up to 50 characters max.</span>
+                <span>* If unchecked, only the first goal filled in will be displayed. If Goal #1 was left blank, Goal #2 would be displayed and so on.</span>
             </fieldset>
             <button id="save-changes-btn">Save Changes</button>
+            <span id="saved-changes-text">Your changes have been saved successfully.</span>
         </form>
         <a href="../index.html">
             <button id="back-to-dashboard-btn">Go Back to Dashboard</button>
