@@ -31,6 +31,10 @@ const storedNsfwContent6CheckedValue = localStorage.getItem("allow-thriller-genr
 if (storedNsfwContent6CheckedValue !== "false") {
     document.querySelector("#allow-thriller-genre-content").checked = true;
 }
+const storedSpoilerContentCheckedValue = localStorage.getItem("allow-spoiler-content")
+if (storedSpoilerContentCheckedValue !== "false") {
+    document.querySelector("#allow-spoiler-content").checked = true;
+}
 // goals
 const storedRandomizeGoalsCheckedValue = localStorage.getItem("randomize-goals")
 if (storedRandomizeGoalsCheckedValue !== "false") {
@@ -90,6 +94,8 @@ document.querySelector("#settings-form").addEventListener("submit", (e) => {
     localStorage.setItem("allow-romance-genre-content", nsfwContent5);
     const nsfwContent6 = document.querySelector("#allow-thriller-genre-content").checked;
     localStorage.setItem("allow-thriller-genre-content", nsfwContent6);
+    const spoilerContent = document.querySelector("#allow-spoiler-content").checked;
+    localStorage.setItem("allow-spoiler-content", spoilerContent);
     // goals
     const goals = [];
     const randomizeGoals = document.querySelector("#randomize-goals").checked;

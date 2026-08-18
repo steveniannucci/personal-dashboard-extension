@@ -33,6 +33,7 @@ const allowNotRatedContent = localStorage.getItem("allow-not-rated-content");
 const allowHorrorGenreContent = localStorage.getItem("allow-horror-genre-content");
 const allowRomanceGenreContent = localStorage.getItem("allow-romance-genre-content");
 const allowThrillerGenreContent = localStorage.getItem("allow-thriller-genre-content");
+const allowSpoilerContent = localStorage.getItem("allow-spoiler-content");
 const storedGoals = localStorage.getItem("goals");
 const storedRandomizeGoalsCheckedValue = localStorage.getItem("randomize-goals");
 
@@ -76,6 +77,9 @@ if (allowRomanceGenreContent === null) {
 }
 if (allowThrillerGenreContent === null) {
     localStorage.setItem("allow-thriller-genre-content", true);
+}
+if (allowSpoilerContent === null) {
+    localStorage.setItem("allow-spoiler-content", false);
 }
 
 document.querySelector("#time").textContent = new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
@@ -184,7 +188,7 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=64cbe67ca110f541ec519ba
                 }
                 
                 if (showBackdrop === false) {
-                    document.querySelector("#nsfw-warning").textContent = `Content Warning: ${contentWarning} (Blocked)`;
+                    document.querySelector("#content-warning").textContent = `Content Warning: ${contentWarning} (Blocked)`;
                 }
 
                 if (storedDisplayTaglineCheckedValue !== "false" && showBackdrop === true) {
@@ -211,6 +215,9 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=64cbe67ca110f541ec519ba
                             randomBackdropNumber = storedBackdropNumber;
                             lockedBackdropIcon.textContent = "🔒"
                             lockedBackdropBtn.textContent = "Unlock backdrop";
+                        }
+                        if (allowSpoilerContent !== "true") {
+                            randomBackdropNumber = 0;
                         }
 
                         lockedBackdropBtn.addEventListener("click", (e) => {
@@ -255,7 +262,11 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=64cbe67ca110f541ec519ba
                             `
                         }
 
-                        document.querySelector("#current-backdrop").textContent = `Backdrop #${randomBackdropNumber} of ${data.backdrops.length - 1}`
+                        if (allowSpoilerContent !== "true") {
+                            document.querySelector("#current-backdrop").textContent = `Backdrop #${randomBackdropNumber} of (${data.backdrops.length - 1} hidden)`;
+                        } else {
+                            document.querySelector("#current-backdrop").textContent = `Backdrop #${randomBackdropNumber} of ${data.backdrops.length - 1}`;
+                        }
                     });
             })
 
