@@ -23,16 +23,6 @@ legend {
     font-size: 1.25rem;
 }
 
-#credit-link {
-    font-size: 1rem;
-}
-
-#credit {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-}
-
 #settings-form {
     display: flex;
     flex-direction: column;
