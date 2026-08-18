@@ -133,7 +133,7 @@ a {
 }
 
 #goal {
-    max-width: 60ch;
+    max-width: 80ch;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
