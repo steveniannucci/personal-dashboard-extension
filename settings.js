@@ -63,7 +63,7 @@ if (storedGoals !== null && storedGoals.length !== 0) {
 document.querySelector("#text-color").value = storedTextColor;
 document.querySelector("#preview").style.color = storedTextColor;
 document.querySelector("#outline-color").value = storedOutlineColor;
-document.querySelector("#preview").style.textShadow = `1px 1px 0 ${storedOutlineColor}`;
+document.querySelector("#preview").style.textShadow = `0px 2px 0 ${storedOutlineColor}`;
 
 document.querySelector("#preview").textContent = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
 
@@ -122,21 +122,20 @@ document.querySelector("#settings-form").addEventListener("submit", (e) => {
     }
     localStorage.setItem("goals", JSON.stringify(goals));
 })
-
 document.querySelector("#text-color").addEventListener("input", () => {
     let selectedTextColor = document.querySelector("#text-color").value;
     document.querySelector("#preview").style.color = selectedTextColor;
 })
 document.querySelector("#outline-color").addEventListener("input", () => {
     let selectedOutlineColor = document.querySelector("#outline-color").value;
-    document.querySelector("#preview").style.textShadow = `1px 1px 0 ${selectedOutlineColor}`;
+    document.querySelector("#preview").style.textShadow = `0px 2px 0 ${selectedOutlineColor}`;
 })
 
 document.querySelector("#restore-default-colors-btn").addEventListener("click", () => {
     document.querySelector("#text-color").value = "#FFFFFF";
     document.querySelector("#outline-color").value = "#000000";
     document.querySelector("#preview").style.color = "#FFFFFF";
-    document.querySelector("#preview").style.textShadow = "1px 1px 0 #000000";
+    document.querySelector("#preview").style.textShadow = "0px 2px 0 #000000";
 })
 
 document.querySelector("#clear-goal-1-btn").addEventListener("click", () => {

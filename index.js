@@ -1,6 +1,7 @@
 let currentTitle = "Spider-Man"
 let currentTextColor = "#FFFFFF";
 let currentOutlineColor = "#000000";
+let addTextShadow = true;
 
 const lockedMovieIcon = document.querySelector("#lock-movie-icon");
 const lockedMovieBtn = document.querySelector("#lock-movie-btn");
@@ -13,6 +14,10 @@ if (storedTitle !== null) {
     currentTitle = storedTitle;
 }
 const storedTextColor = localStorage.getItem("text-color")
+const storedOutlineColor = localStorage.getItem("outline-color")
+if (storedTextColor === storedOutlineColor) {
+    addTextShadow = false;
+}
 if (storedTextColor === null) {
     localStorage.setItem("text-color", currentTextColor);
 } else {
@@ -20,15 +25,18 @@ if (storedTextColor === null) {
     for (let element of elements) {
         element.style.color = storedTextColor;
     }
+    document.querySelector("#time").style.color = storedTextColor;
 }
-const storedOutlineColor = localStorage.getItem("outline-color")
+console.log(addTextShadow);
 if (storedOutlineColor === null) {
     localStorage.setItem("outline-color", currentOutlineColor);
+    console.log(addTextShadow);
 } else {
     const elements = document.querySelectorAll(".subject-to-recolor");
     for (let element of elements) {
-        element.style.textShadow = `1px 1px 0 ${storedOutlineColor}`
+        element.style.textShadow = `0px 1px 0 ${storedOutlineColor}`
     }
+    document.querySelector("#time").style.textShadow = `0px 2px 0 ${storedOutlineColor}`
 }
 const storedMovieNumber = localStorage.getItem("locked-movie-number");
 const storedBackdropNumber = localStorage.getItem("locked-backdrop-number");

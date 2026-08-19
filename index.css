@@ -170,6 +170,7 @@ a {
 #lock-movie-btn,
 #lock-backdrop-btn {
     cursor: pointer;
+    border: 1px solid black;
     padding: 0.2em 0.5em;
     width: 100%;
 }
