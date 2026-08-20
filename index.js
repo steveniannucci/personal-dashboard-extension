@@ -27,10 +27,8 @@ if (storedTextColor === null) {
     }
     document.querySelector("#time").style.color = storedTextColor;
 }
-console.log(addTextShadow);
 if (storedOutlineColor === null) {
     localStorage.setItem("outline-color", currentOutlineColor);
-    console.log(addTextShadow);
 } else {
     const elements = document.querySelectorAll(".subject-to-recolor");
     for (let element of elements) {
@@ -108,6 +106,7 @@ let showBackdrop = true;
 
 document.querySelector("#title").textContent = `Title: ${currentTitle}`;
 
+try {
 fetch(`https://api.themoviedb.org/3/search/movie?api_key=64cbe67ca110f541ec519ba56ec890b2&query=${currentTitle}&include_adult=false`, { 
     method: "GET",
     header: "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NGNiZTY3Y2ExMTBmNTQxZWM1MTliYTU2ZWM4OTBiMiIsIm5iZiI6MTc4NjU1MzMwNS4xOTkwMDAxLCJzdWIiOiI2YTdjYTNkOTU4ZDU5MGZmZDBhZTY4MzYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.KaRDaQ0tzDzj5ZrcjBmj5TZ2uA8HER25NdcZpqeeApw"
@@ -312,7 +311,19 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=64cbe67ca110f541ec519ba
         document.querySelector("#change-backdrop-form").style.display = "none";
         document.querySelector("#current-backdrop-overview").style.display = "none";
     }
-});
+})} catch (error) {
+    console.log(error);
+
+    document.querySelector("#poster-container").innerHTML = `
+            <p id="poster" class="no-movie" title="This Movie Can't Be Found Right Now. (${currentYear})">Movie Can't Be Found Right Now.</p>
+        `
+
+    document.body.style.background = "black"
+    document.body.style.backgroundSize = `cover`;
+    document.querySelector("#title").textContent = `Title: ${currentTitle} (This Movie Can't Be Found Right Now)`;
+    document.querySelector("#change-backdrop-form").style.display = "none";
+    document.querySelector("#current-backdrop-overview").style.display = "none";
+};
 
 document.querySelector("#search-bar-form").addEventListener("submit", (e) => {
     e.preventDefault();
